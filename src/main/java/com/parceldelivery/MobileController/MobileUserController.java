@@ -38,7 +38,4 @@ public class MobileUserController {
             return result;
         }
     }
-
 }
-
-
