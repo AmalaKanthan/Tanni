@@ -3,9 +3,10 @@ package com.parceldelivery.MobileController;
 import com.parceldelivery.Model.Driver;
 import com.parceldelivery.Services.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class MobileUserController {
@@ -13,8 +14,8 @@ public class MobileUserController {
     @Autowired
     DriverService DService;
 
-    @RequestMapping("/mobile/login-user")
-    public String loginUser(@RequestBody Driver driver) {
+    @RequestMapping("/mobile/login-driver")
+    public String loginDriver(@RequestBody Driver driver) {
         String result = "";
         System.out.println(driver);
         Driver driver1 = DService.findByEmailAndPassword(driver.getEmail(), driver.getPassword());
@@ -38,4 +39,28 @@ public class MobileUserController {
             return result;
         }
     }
-}
+
+    @GetMapping("/mobile/getAllDrivers")
+    public List<Driver> getAllDrivers(){
+        return DService.showAllDriver();
+    }
+
+    @PostMapping(path="/mobile/addDriver")
+    public boolean addDriver(@RequestBody Driver driver){
+        DService.saveDriver(driver);
+        return true;
+    }
+
+    @PutMapping("/mobile/updateDriver/{emailID}")
+    public Driver updateDriver(@PathVariable String emailID, @RequestBody Driver user) {
+        return DService.updateDriver(emailID, user);
+    }
+
+    @DeleteMapping("/mobile/Driver/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteDriver(@PathVariable("email") Driver email){
+        DService.deleteDriver(email);
+    }
+
+    }
+
