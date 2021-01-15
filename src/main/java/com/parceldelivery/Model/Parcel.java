@@ -21,8 +21,9 @@ public class Parcel {
 
     private String size;
 
-
     private String note;
+
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "categoryID")

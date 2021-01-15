@@ -30,7 +30,7 @@ public class ParcelController {
     @PostMapping("/parcel/addParcel")
     public String addParcel(Parcel parcel){
         parcelService.saveParcel(parcel);
-        return "redirect:/resister-driver";
+        return "redirect:/add-delivery";
     }
 
 

@@ -19,7 +19,7 @@ public class InquiryController {
         return inquiryService.showAllInquiry();
     }
 
-    @GetMapping("/inquiry/{inquiryID}")
+    @DeleteMapping("/inquiry/{inquiryID}")
     public String deleteInquiry(@PathVariable("inquiryID")Inquiry  inquiryID)
     {
         inquiryService.deleteInquiry(inquiryID);

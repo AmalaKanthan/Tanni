@@ -1,4 +1,9 @@
 <!doctype html>
+<script>
+    var globalVaribale={
+        x : "testing"
+    };
+</script>
 <html class="no-js" lang="zxx">
 
 <head>

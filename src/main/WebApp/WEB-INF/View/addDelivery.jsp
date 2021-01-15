@@ -1,4 +1,9 @@
 <!doctype html>
+<script type="text/javascript" src="addParcel.jsp">
+    console.log(x);
+    console.log("typed");
+</script>
+
 <html class="no-js" lang="zxx">
 
 <head>
